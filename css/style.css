@@ -43,6 +43,28 @@ body.dark{
     --box3-color: #3A3B3C;
     --title-icon-color: #CCC;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b3cc1;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover,
+body.dark .activity-data::-webkit-scrollbar-thumb:hover{
+    background: #3A3B3C;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -116,7 +138,7 @@ nav .menu-items{
     height: 5px;
     width: 5px;
     border-radius: 50%;
-    /* background-color: var(--primary-color); */
+    background-color: var(--primary-color);
 }
 
 body.dark li a:hover::before{
@@ -293,7 +315,7 @@ nav.close ~ .dashboard .top{
     position: relative;
     height: 35px;
     width: 35px;
-    /* background-color: var(--primary-color); */
+    background-color: var(--primary-color);
     border-radius: 6px;
     color: var(--title-icon-color);
     display: flex;
@@ -496,14 +518,5 @@ nav.close ~ .dashboard .top{
         width: 100%;
     }
     /* CLOSE NAV*/
-    
-
-    
-
- 
-
-    
-
-
     
 }
