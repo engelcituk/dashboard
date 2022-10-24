@@ -51,7 +51,13 @@ nav {
     width: 250px;
     padding: 10px 18px;
     background-color: var(--panel-color);
+    border-right: 1px solid var(--border-color);
     /* border: 1px solid red; */
+    transition: var(--tran-05);
+
+}
+nav.close{
+    width: 73px;    
 }
 nav .logo{
     display:flex;    
@@ -75,8 +81,13 @@ nav .logo .logo_name{
     font-weight: 600;
     color: var(--text-color);
     margin-left: 14px;
+    transition: var(--tran-05);
 }
 
+nav.close .logo_name{
+    opacity: 0;
+    pointer-events: none;
+}
 nav .menu-items{    
     margin-top: 40px;
     height: calc(100% - 90px); /*sino desplaza mucho hacía abajo los ul en su interior*/
@@ -108,6 +119,9 @@ nav .menu-items{
     background-color: var(--primary-color);
 }
 
+body.dark li a:hover::before{
+    background-color: var(--text-color);
+}
 
 .menu-items li a i{
     font-size: 24px;
@@ -123,14 +137,30 @@ nav .menu-items{
     font-size: 18px;
     font-weight: 400;
     color: var(--black-light-color);
+    transition: var(--tran-05);
+}
+/* cuando se cierra el nav */
+nav.close li a .link-name{
+    opacity: 0;
+    pointer-events: none;
 }
 
 .nav-links li a:hover i, .nav-links li a:hover .link-name{
     color: var(--primary-color);
 }
+
+body.dark .nav-links li a:hover i, body.dark .nav-links li a:hover .link-name{
+    color: var(--text-color);    
+}
+
+.menu-items .logout-mode{
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
 .menu-items .mode{
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .menu-items .mode-toggle{
@@ -168,4 +198,156 @@ nav .menu-items{
 
 body.dark .switch::before{
     left: 20px;
+}
+
+.dashboard{
+    position: relative;
+    left: 250px;
+    background-color: var(--panel-color);
+    height: 100vh;
+    width: calc(100% - 250px); /*250px es la medida del sidebar*/
+    padding: 10px 14px;
+    transition: var(--tran-05);
+}
+/*Hermano general: Aplica el estilo siempre y cuando coincida un nav.close con un .dashboard en el mismo contenedor
+En este caso dentro del body*/
+nav.close ~ .dashboard{ 
+    left: 73px;
+    width: calc(100% - 73px);
+
+}
+.dashboard .top {
+    position: fixed;
+    left: 250px;
+    top: 0;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+    transition: var(--tran-05);
+}
+
+nav.close ~ .dashboard .top{ 
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.dashboard .top .sidebar-toggle{
+    font-size: 26px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.dashboard .top .search-box {
+    position: relative;
+    height: 45px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 30px;
+    /* border: 1px solid red; */
+}
+
+.top .search-box input{
+    position: absolute;
+    border: 1px solid var(--border-color);
+    background-color: var(--panel-color);
+    padding: 0 25px 0 50px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+
+}
+
+.top .search-box i {
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--black-light-color);
+}
+
+.top img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.dashboard .dash-content{
+    padding-top: 50px;
+}
+
+.dash-content .title{
+    display: flex;
+    align-items: center;
+    margin: 30px 0 30px 0;
+}
+
+.dash-content .title i{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    color: var(--title-icon-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.dash-content .title .text{
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+
+.dash-content .boxes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dash-content .boxes .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 3 - 15px);
+    padding: 15px;
+    background-color: var(--box1-color);
+    border-radius: 12px;
+
+}
+
+.boxes .box i{
+    font-size: 35px;
+    color: var(--text-color);
+}
+.boxes .box .text{
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.boxes .box .number{
+    white-space: nowrap;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.boxes .box.box2{
+    background-color: var(--box2-color);
+}
+
+.boxes .box.box3{
+    background-color: var(--box3-color);
 }
