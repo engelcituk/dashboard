@@ -81,8 +81,20 @@ nav .menu-items{
     align-items: center;
     height: 50px;
     text-decoration: none;  
+    position: relative;
     /* border: 1px solid red;   */
 }
+
+.menu-items li a:hover::before{
+    content: '';
+    position: absolute;
+    left: -7px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
 
 .menu-items li a i{
     font-size: 24px;
