@@ -91,7 +91,6 @@ nav .logo-image{
     justify-content: center;
     min-width: 45px;    
 }
-
 nav .logo-image img{
     width: 40px;
     object-fit: cover;
@@ -187,11 +186,12 @@ body.dark .nav-links li a:hover i, body.dark .nav-links li a:hover .link-name{
 
 .menu-items .mode-toggle{
     position: absolute;
-    height: 50px;
     right: 14px;
+    height: 50px;
     min-width: 45px;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     /* border: 1px solid red; */
 }
@@ -226,7 +226,7 @@ body.dark .switch::before{
     position: relative;
     left: 250px;
     background-color: var(--panel-color);
-    height: 100vh;
+    min-height: 100vh; /**/
     width: calc(100% - 250px); /*250px es la medida del sidebar*/
     padding: 10px 14px;
     transition: var(--tran-05);
@@ -240,14 +240,16 @@ nav.close ~ .dashboard {
 }
 .dashboard .top {
     position: fixed;
-    left: 250px;
     top: 0;
+    left: 250px;
     display: flex;
     width: calc(100% - 250px);
     justify-content: space-between;
     padding: 10px 14px;
     background-color: var(--panel-color);
     transition: var(--tran-05);
+    z-index: 10;
+
 }
 
 nav.close ~ .dashboard .top{ 
@@ -289,7 +291,7 @@ nav.close ~ .dashboard .top{
     position: absolute;
     left: 15px;
     font-size: 22px;
-    z-index: 2;
+    z-index: 10;
     top: 50%;
     transform: translateY(-50%);
     color: var(--black-light-color);
@@ -342,10 +344,11 @@ nav.close ~ .dashboard .top{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(100% / 3 - 15px);
-    padding: 15px;
-    background-color: var(--box1-color);
     border-radius: 12px;
+    width: calc(100% / 3 - 15px);
+    padding: 15px 20px;
+    background-color: var(--box1-color);
+    transition: var(--tran-05);
 }
 
 .boxes .box i{
@@ -359,8 +362,7 @@ nav.close ~ .dashboard .top{
     color: var(--text-color);
 }
 
-.boxes .box .number{
-    white-space: nowrap;
+.boxes .box .number{    
     font-size: 40px;
     font-weight: 500;
     color: var(--text-color);
@@ -382,10 +384,7 @@ nav.close ~ .dashboard .top{
 }
 
 .activity .activity-data{
-    display: flex;
-    /*
-    flex-direction: column;
-    width: calc(100% / 5 - 15px); */
+    display: flex;   
 }
 
 .activity-data .data{
@@ -394,7 +393,7 @@ nav.close ~ .dashboard .top{
     margin: 0 15px;
 }
 
-.activity-data .data .data-title{
+.activity-data .data-title{
     font-size: 20px;
     font-weight: 500;
     color: var(--text-color);
@@ -410,76 +409,62 @@ nav.close ~ .dashboard .top{
 }
 
 /* Has un maximo de 100, se collapse el sidebar, se muestra solo los icons */
-@media (max-width: 1000px) {    
-    nav {
+@media (max-width: 1000px) {
+    nav{
         width: 73px;
     }
-    
-    /* Oculto el logo */
+    nav.close{
+        width: 250px;
+    }
     nav .logo_name{
         opacity: 0;
         pointer-events: none;
     }
-
-    nav li a .link-name{
-        opacity: 0;
-        pointer-events: none;        
-    }
-
-    nav ~ .dashboard  {
-        left: 73px;
-        width: calc(100% - 73px);
-    }
-    
-    nav ~ .dashboard .top {
-        left: 73px;
-        width: calc(100% - 73px);
-    }
-    /* CLOSE NAV*/
-    nav.close{
-        width: 250px;
-    }
-
     nav.close .logo_name{
         opacity: 1;
         pointer-events: auto;
     }
-
+    nav li a .link-name{
+        opacity: 0;
+        pointer-events: none;
+    }
     nav.close li a .link-name{
         opacity: 1;
-        pointer-events: auto;        
+        pointer-events: auto;
     }
-
-    nav.close ~ .dashboard  {
-        left: 250px;
-        width: calc(100% - 250px);
-    } 
-
-    nav.close ~ .dashboard .top {
+    nav ~ .dashboard{
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+    nav.close ~ .dashboard{
         left: 250px;
         width: calc(100% - 250px);
     }
-
-    .activity .activity-data {
-        overflow-y: scroll;
+    nav ~ .dashboard .top{
+        left: 73px;
+        width: calc(100% - 73px);
+    }
+    nav.close ~ .dashboard .top{
+        left: 250px;
+        width: calc(100% - 250px);
+    }
+    .activity .activity-data{
+        overflow-X: scroll;
     }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 780px) {
     .dash-content .boxes .box{
         width: calc(100% / 2 - 15px);
         margin-top: 15px;
     }
 }
-
 @media (max-width: 560px) {
     .dash-content .boxes .box{
-        width: 100%;        
+        width: 100% ;
     }
 }
-
 @media (max-width: 400px) {
-    nav {
+    nav{
         width: 0px;
     }
     nav.close{
@@ -495,28 +480,26 @@ nav.close ~ .dashboard .top{
     }
     nav li a .link-name{
         opacity: 0;
-        pointer-events: none;        
+        pointer-events: none;
     }
     nav.close li a .link-name{
         opacity: 0;
-        pointer-events: none;        
+        pointer-events: none;
     }
-    nav ~ .dashboard  {
+    nav ~ .dashboard{
         left: 0;
         width: 100%;
     }
-    nav.close ~ .dashboard  {
+    nav.close ~ .dashboard{
         left: 73px;
         width: calc(100% - 73px);
-    } 
-    nav ~ .dashboard .top {
-        left: 0;
-        width: 100%;
-    }    
-    nav.close ~ .dashboard .top {
+    }
+    nav ~ .dashboard .top{
         left: 0;
         width: 100%;
     }
-    /* CLOSE NAV*/
-    
+    nav.close ~ .dashboard .top{
+        left: 0;
+        width: 100%;
+    }
 }
