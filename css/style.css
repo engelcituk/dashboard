@@ -116,7 +116,7 @@ nav .menu-items{
     height: 5px;
     width: 5px;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
 }
 
 body.dark li a:hover::before{
@@ -293,7 +293,7 @@ nav.close ~ .dashboard .top{
     position: relative;
     height: 35px;
     width: 35px;
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
     border-radius: 6px;
     color: var(--title-icon-color);
     display: flex;
@@ -313,6 +313,7 @@ nav.close ~ .dashboard .top{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap; /*Si las cajas ya no caben en el row, se corta y salta a otra lina*/
 }
 
 .dash-content .boxes .box{
@@ -323,7 +324,6 @@ nav.close ~ .dashboard .top{
     padding: 15px;
     background-color: var(--box1-color);
     border-radius: 12px;
-
 }
 
 .boxes .box i{
@@ -388,7 +388,7 @@ nav.close ~ .dashboard .top{
 }
 
 /* Has un maximo de 100, se collapse el sidebar, se muestra solo los icons */
-@media (max-width: 1000px) {
+@media (max-width: 1000px) {    
     nav {
         width: 73px;
     }
@@ -413,7 +413,7 @@ nav.close ~ .dashboard .top{
         left: 73px;
         width: calc(100% - 73px);
     }
-    /* CLOSE */
+    /* CLOSE NAV*/
     nav.close{
         width: 250px;
     }
@@ -437,4 +437,73 @@ nav.close ~ .dashboard .top{
         left: 250px;
         width: calc(100% - 250px);
     }
+
+    .activity .activity-data {
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width: 768px) {
+    .dash-content .boxes .box{
+        width: calc(100% / 2 - 15px);
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 560px) {
+    .dash-content .boxes .box{
+        width: 100%;        
+    }
+}
+
+@media (max-width: 400px) {
+    nav {
+        width: 0px;
+    }
+    nav.close{
+        width: 73px;
+    }
+    nav .logo_name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav.close .logo_name{
+        opacity: 0;
+        pointer-events: none;
+    }
+    nav li a .link-name{
+        opacity: 0;
+        pointer-events: none;        
+    }
+    nav.close li a .link-name{
+        opacity: 0;
+        pointer-events: none;        
+    }
+    nav ~ .dashboard  {
+        left: 0;
+        width: 100%;
+    }
+    nav.close ~ .dashboard  {
+        left: 73px;
+        width: calc(100% - 73px);
+    } 
+    nav ~ .dashboard .top {
+        left: 0;
+        width: 100%;
+    }    
+    nav.close ~ .dashboard .top {
+        left: 0;
+        width: 100%;
+    }
+    /* CLOSE NAV*/
+    
+
+    
+
+ 
+
+    
+
+
+    
 }
